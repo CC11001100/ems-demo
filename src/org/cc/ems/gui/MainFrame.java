@@ -192,14 +192,14 @@ public class MainFrame extends JFrame {
 						table.setValueAt("￥"+v,rowIndex,columnIndex);
 					}
 				}
+				table.setValueAt(String.format("￥%.2f",e.getFinallySalary()),rowIndex,5);
 				service.modify(e);
 			}
 			
 			@Override
 			public void changeSelection(int rowIndex, int columnIndex, boolean toggle, boolean extend) {
 				super.changeSelection(rowIndex, columnIndex, toggle, extend);
-				//如此可实现单击即可编辑
-				editCellAt(rowIndex,columnIndex);
+				
 				this.rowIndex=rowIndex;
 				this.columnIndex=columnIndex;
 				this.value=(String) table.getValueAt(rowIndex,columnIndex);
@@ -207,13 +207,23 @@ public class MainFrame extends JFrame {
 				//不用手敲字
 				if(columnIndex==2){
 					modifyButton.doClick();
+					return;
+				}else if(columnIndex==4){
+					this.value=this.value.substring(1);
+					table.setValueAt(this.value,rowIndex,columnIndex);
 				}
+				
+				//如此可实现单击即可编辑
+				editCellAt(rowIndex,columnIndex);
+
+				
+
 				
 			}
 			
 			@Override
 			public boolean isCellEditable(int row, int column) {
-				if(column==0) return false;
+				if(column==0 || column==5) return false;
 				return true;
 			}
 			
@@ -326,7 +336,7 @@ public class MainFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MyDialog dialog=new MyDialog(null, 0);
-				dialog.setLocation(MainFrame.this.getLocation().x+(FRAME_WIDTH-dialog.getWidth())/2,MainFrame.this.getLocation().y+(FRAME_HEIGHT-dialog.getHeight())/2);
+				dialog.setLocation(MainFrame.this.getLocation().x+(MainFrame.this.getWidth()-dialog.getWidth())/2,MainFrame.this.getLocation().y+(MainFrame.this.getHeight()-dialog.getHeight())/2);
 				dialog.setVisible(true);
 				
 				search.actionPerformed(e);
@@ -352,7 +362,7 @@ public class MainFrame extends JFrame {
 				}else{
 					String id=(String) table.getValueAt(rs[0],0);
 					MyDialog dialog=new MyDialog(service.get(id), 1);
-					dialog.setLocation(MainFrame.this.getLocation().x+(FRAME_WIDTH-dialog.getWidth())/2,MainFrame.this.getLocation().y+(FRAME_HEIGHT-dialog.getHeight())/2);
+					dialog.setLocation(MainFrame.this.getLocation().x+(MainFrame.this.getWidth()-dialog.getWidth())/2,MainFrame.this.getLocation().y+(MainFrame.this.getHeight()-dialog.getHeight())/2);
 					dialog.setVisible(true);
 					
 					search.actionPerformed(e);

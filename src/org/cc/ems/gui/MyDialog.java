@@ -20,6 +20,7 @@ import org.cc.ems.entity.Director;
 import org.cc.ems.entity.Employee;
 import org.cc.ems.entity.Manager;
 import org.cc.ems.service.EmployeeService;
+import java.awt.Toolkit;
 
 public class MyDialog extends JDialog {
 	
@@ -33,6 +34,7 @@ public class MyDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public MyDialog(final Employee e,final int operType) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MyDialog.class.getResource("/org/cc/ems/resource/employeeHeadimage.png")));
 		setTitle("雇员信息");
 		setModal(true);
 		setBounds(100, 100, 219, 300);

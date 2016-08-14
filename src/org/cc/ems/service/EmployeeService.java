@@ -13,6 +13,10 @@ import java.util.Stack;
 import org.cc.ems.entity.Employee;
 import org.cc.ems.util.XMLUtil;
 
+import com.github.stuxuhai.jpinyin.PinyinException;
+import com.github.stuxuhai.jpinyin.PinyinFormat;
+import com.github.stuxuhai.jpinyin.PinyinHelper;
+
 /**
  * EmploeeService
  * @author cc
@@ -88,30 +92,37 @@ public class EmployeeService {
 	}
 	
 	//根据名字过滤
-	public List<Employee> filter(String keywork){
+	public List<Employee> filter(String keyword){
 		List<Employee> res=new ArrayList<Employee>();
-		for(int i=0;i<list.size();i++){
-			Employee e=list.get(i);
-			if(e.getName().indexOf(keywork)!=-1) res.add(e);
+		try {
+			for(int i=0;i<list.size();i++){
+				Employee e=list.get(i);
+				//名字匹配或者拼音匹配也可以 使用了Jpinyin类库
+				if(e.getName().indexOf(keyword)!=-1 || 
+						PinyinHelper.convertToPinyinString(e.getName(),"",PinyinFormat.WITHOUT_TONE).indexOf(keyword)!=-1) res.add(e);
+			}
+		} catch (PinyinException e) {
+			e.printStackTrace();
 		}
 		return res;
 	}
 	
 	public String[][] list2Array(List<Employee> list){
-		String data[][]=new String[list.size()][5];
+		String data[][]=new String[list.size()][6];
 		for(int i=0;i<list.size();i++){
 			Employee e=list.get(i%list.size());
 			data[i][0]=e.getId();
 			data[i][1]=e.getName();
 			data[i][2]=e.getPosition();
 			data[i][3]=Integer.toString(e.getAbsenteeism());
-			data[i][4]=String.format("￥%.2f",e.getFinallySalary());
+			data[i][4]=String.format("￥%.2f",e.getSalary());
+			data[i][5]=String.format("￥%.2f",e.getFinallySalary());
 		}
 		return data;
 	}
 	
 	public String[] getHeaders(){
-		return new String[]{"编号","姓名","职位","旷工","工资"};
+		return new String[]{"编号","姓名","职位","旷工（天）","基本工资","实发工资"};
 	}
 
 	public void save() {
