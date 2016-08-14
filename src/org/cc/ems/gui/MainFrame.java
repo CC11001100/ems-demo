@@ -37,6 +37,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.DropMode;
 
 public class MainFrame extends JFrame {
 
@@ -91,15 +94,13 @@ public class MainFrame extends JFrame {
 		setSize(FRAME_WIDTH,FRAME_HEIGHT);
 		setLocation(ScreenUtil.getInstance().getCenterLocation(FRAME_WIDTH,FRAME_HEIGHT));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
+//		setResizable(false);
 		
 		BorderLayout borderLayout=new BorderLayout();
 		getContentPane().setLayout(borderLayout);
 		
 		searchInputField=new JTextField(15);
 		searchInputField.setToolTipText("输入雇员名字过滤");
-		searchInputField.setHorizontalAlignment(SwingConstants.LEFT);
-		searchInputField.setFont(new Font("宋体", Font.PLAIN, 12));
 		JPanel panel=new JPanel();
 		
 		panel.add(searchInputField);
@@ -193,14 +194,14 @@ public class MainFrame extends JFrame {
 	
 	private void initListener(){
 		
-		ActionListener search=new ActionListener() {
+		final ActionListener search=new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				String keyword=searchInputField.getText();
+				String keyword=searchInputField.getText().trim();
 				List<Employee> list=null;
-				if(keyword.trim().length()==0){
+				if(keyword.length()==0){
 					list=service.list();
 				}else{
 					list=service.filter(keyword);
@@ -214,6 +215,22 @@ public class MainFrame extends JFrame {
 		searchInputField.addActionListener(search);
 		searchButton.addActionListener(search);
 		
+		searchInputField.addKeyListener(new KeyAdapter() {
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String keyword=searchInputField.getText().trim();
+				List<Employee> list=null;
+				if(keyword.length()==0){
+					list=service.list();
+				}else{
+					list=service.filter(keyword);
+				}
+				
+				DefaultTableModel model=new DefaultTableModel(service.list2Array(list),service.getHeaders());
+				table.setModel(model);
+			}
+		});
 		
 		addButton.addActionListener(new ActionListener() {
 			
@@ -223,8 +240,10 @@ public class MainFrame extends JFrame {
 				dialog.setLocation(MainFrame.this.getLocation().x+(FRAME_WIDTH-dialog.getWidth())/2,MainFrame.this.getLocation().y+(FRAME_HEIGHT-dialog.getHeight())/2);
 				dialog.setVisible(true);
 				
-				DefaultTableModel model=new DefaultTableModel(EmployeeService.getInstance().toArrayData(),EmployeeService.getInstance().getHeaders());
-				table.setModel(model);
+				search.actionPerformed(e);
+				
+//				DefaultTableModel model=new DefaultTableModel(EmployeeService.getInstance().toArrayData(),EmployeeService.getInstance().getHeaders());
+//				table.setModel(model);
 			}
 		});
 		
@@ -247,8 +266,9 @@ public class MainFrame extends JFrame {
 					dialog.setLocation(MainFrame.this.getLocation().x+(FRAME_WIDTH-dialog.getWidth())/2,MainFrame.this.getLocation().y+(FRAME_HEIGHT-dialog.getHeight())/2);
 					dialog.setVisible(true);
 					
-					DefaultTableModel model=new DefaultTableModel(EmployeeService.getInstance().toArrayData(),EmployeeService.getInstance().getHeaders());
-					table.setModel(model);
+					search.actionPerformed(e);
+//					DefaultTableModel model=new DefaultTableModel(EmployeeService.getInstance().toArrayData(),EmployeeService.getInstance().getHeaders());
+//					table.setModel(model);
 				}
 				
 			}
