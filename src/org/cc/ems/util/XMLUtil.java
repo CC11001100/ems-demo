@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.cc.ems.entity.CommonEmployee;
 import org.cc.ems.entity.Director;
-import org.cc.ems.entity.Emploee;
+import org.cc.ems.entity.Employee;
 import org.cc.ems.entity.Manager;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -52,7 +52,7 @@ public final class XMLUtil {
 	 * 存为XML
 	 * @param list
 	 */
-	public void save(List<Emploee> list,String path){
+	public void save(List<Employee> list,String path){
 
 		Document document=DocumentHelper.createDocument();
 		document.setXMLEncoding("UTF-8");
@@ -66,7 +66,7 @@ public final class XMLUtil {
 		Element director=root.addElement("director");
 		director.addAttribute("type","3").addAttribute("position","董事").addAttribute("salary","5500");
 		
-		for(Emploee e:list){
+		for(Employee e:list){
 			if("普通员工".equals(e.getPosition())){
 				Element element=commonEmployee.addElement("employee");
 				element.addAttribute("id",e.getId()).addAttribute("name",e.getName()).addAttribute("absenteeism",Integer.toString(e.getAbsenteeism()));
@@ -96,9 +96,9 @@ public final class XMLUtil {
 	 * 读取XML存档
 	 * @return
 	 */
-	public List<Emploee> read(String path){
+	public List<Employee> read(String path){
 		
-		List<Emploee> list=new ArrayList<Emploee>();
+		List<Employee> list=new ArrayList<Employee>();
 		
 		Element root=getDocument(path).getRootElement();
 		for(Iterator<Element> iter=root.elementIterator();iter.hasNext();){

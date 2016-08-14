@@ -5,7 +5,7 @@ package org.cc.ems.entity;
  * @author cc
  *
  */
-public class CommonEmployee extends Emploee {
+public class CommonEmployee extends Employee {
 
 	private static String position="普通员工";
 	private static double salary=2500;

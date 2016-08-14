@@ -5,7 +5,7 @@ package org.cc.ems.entity;
  * @author cc
  *
  */
-public class Director extends Emploee {
+public class Director extends Employee {
 	
 	private static String position="董事";
 	private static double salary=5500;

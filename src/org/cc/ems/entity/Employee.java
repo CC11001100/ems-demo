@@ -6,7 +6,7 @@ package org.cc.ems.entity;
  * @author cc
  *
  */
-public abstract class Emploee {
+public abstract class Employee {
 
 	/**编号**/
 	private String id;
@@ -19,10 +19,10 @@ public abstract class Emploee {
 	/**基本工资**/ 
 	private double salary;
 
-	public Emploee() {
+	public Employee() {
 	}
 	
-	public Emploee(String id, String name, String position, int absenteeism, double salary) {
+	public Employee(String id, String name, String position, int absenteeism, double salary) {
 		setId(id);
 		setName(name);
 		setPosition(position);
@@ -38,8 +38,8 @@ public abstract class Emploee {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Emploee){
-			Emploee e=(Emploee) obj;
+		if(obj instanceof Employee){
+			Employee e=(Employee) obj;
 			return e.getId().equalsIgnoreCase(this.getId());
 		}
 		return false;
