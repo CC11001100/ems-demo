@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<employees>
+  <commonEmployee type="1" position="普通员工">
+    <employee id="A1001" name="张三" absenteeism="3" salary="2500.00"/>
+    <employee id="A1002" name="李四" absenteeism="2" salary="2500.00"/>
+    <employee id="A1003" name="王五" absenteeism="2" salary="2500.00"/>
+    <employee id="A1004" name="赵六" absenteeism="2" salary="2500.00"/>
+    <employee id="A1005" name="李白" absenteeism="3" salary="2500.00"/>
+    <employee id="A1006" name="杜甫" absenteeism="2" salary="2500.00"/>
+    <employee id="A1007" name="白居易" absenteeism="2" salary="2500.00"/>
+    <employee id="A1017" name="华生" absenteeism="3" salary="2500.00"/>
+    <employee id="A1018" name="元芳" absenteeism="2" salary="800.00"/>
+    <employee id="A1019" name="狄仁杰" absenteeism="2" salary="400.00"/>
+    <employee id="A1020" name="蛇灵" absenteeism="20" salary="2345.00"/>
+    <employee id="A1023" name="列宁" absenteeism="2" salary="2500.00"/>
+    <employee id="A1024" name="鲁智深" absenteeism="2" salary="2500.00"/>
+    <employee id="A1025" name="林冲" absenteeism="3" salary="2500.00"/>
+    <employee id="A1030" name="chenjicheng" absenteeism="1" salary="2500.00"/>
+    <employee id="C1001" name="陆小凤" absenteeism="19" salary="2500.00"/>
+  </commonEmployee>
+  <manager type="2" position="经理">
+    <employee id="B1001" name="段誉" absenteeism="28" salary="3500.00"/>
+    <employee id="B1003" name="东方不败" absenteeism="2" salary="3500.00"/>
+  </manager>
+  <director type="3" position="董事">
+    <employee id="A1021" name="马克思" absenteeism="3" salary="9900.00"/>
+    <employee id="A1022" name="恩格斯" absenteeism="2" salary="5500.00"/>
+  </director>
+</employees>

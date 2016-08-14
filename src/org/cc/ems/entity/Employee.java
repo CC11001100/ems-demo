@@ -18,7 +18,7 @@ public abstract class Employee {
 	private int absenteeism;
 	/**基本工资**/ 
 	private double salary;
-
+	
 	public Employee() {
 	}
 	

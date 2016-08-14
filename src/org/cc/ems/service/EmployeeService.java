@@ -1,5 +1,10 @@
 package org.cc.ems.service;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,13 +20,26 @@ import org.cc.ems.util.XMLUtil;
  */
 public class EmployeeService {
 
-	private List<Employee> list=XMLUtil.getInstance().read("d:/employeeDB.xml");
+	private String DEFAULT_PATH="d:/employeeDB.xml";
+	private List<Employee> list;
 	private static EmployeeService instance;
 	
 	//删除回收站，以便进行撤销删除(undo del)
 	private Stack<List<Employee>> trash=new Stack<List<Employee>>();
 	
 	private EmployeeService() {
+		if(new File(DEFAULT_PATH).exists()){
+			list=XMLUtil.getInstance().read(DEFAULT_PATH);
+		}else{
+			try {
+				//如果读取不到默认的话，就从自己的jar包中拿一个备份的
+				InputStream is=Thread.currentThread().getContextClassLoader().getResourceAsStream("org/cc/ems/resource/employeeDB.xml");
+				BufferedReader reader=new BufferedReader(new InputStreamReader(is,"UTF-8"));
+				list=XMLUtil.getInstance().read(reader);
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public synchronized static EmployeeService getInstance(){
@@ -97,7 +115,7 @@ public class EmployeeService {
 	}
 
 	public void save() {
-		XMLUtil.getInstance().save(list,"d:/employeeDB.xml");
+		XMLUtil.getInstance().save(list,DEFAULT_PATH);
 	}
 	
 }

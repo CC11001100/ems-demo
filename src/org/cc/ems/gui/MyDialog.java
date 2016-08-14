@@ -2,13 +2,18 @@ package org.cc.ems.gui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JTextField;
 
 import org.cc.ems.entity.CommonEmployee;
 import org.cc.ems.entity.Director;
@@ -16,19 +21,9 @@ import org.cc.ems.entity.Employee;
 import org.cc.ems.entity.Manager;
 import org.cc.ems.service.EmployeeService;
 
-import java.awt.GridLayout;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.AbstractListModel;
-import javax.swing.ListSelectionModel;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 public class MyDialog extends JDialog {
+	
+	private static final long serialVersionUID = 125502258545239218L;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_3;

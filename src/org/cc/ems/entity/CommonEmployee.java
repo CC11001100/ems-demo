@@ -8,7 +8,6 @@ package org.cc.ems.entity;
 public class CommonEmployee extends Employee {
 
 	private static String position="普通员工";
-	private static double salary=2500;
 	
 	public CommonEmployee() {
 	}
@@ -17,7 +16,7 @@ public class CommonEmployee extends Employee {
 		setId(id);
 	}
 	
-	public CommonEmployee(String id,String name,int absenteeism) {
+	public CommonEmployee(String id,String name,int absenteeism,double salary) {
 		super(id,name,position,absenteeism,salary);
 	}
 
@@ -28,7 +27,7 @@ public class CommonEmployee extends Employee {
 	@Override
 	public double getFinallySalary() {
 		//在基本工资的基础上增加10%的工作餐，50%的岗位补助，200元住房补助
-		return getSalary()*1.6+200-salary/30*getAbsenteeism();
+		return getSalary()*1.6+200-getSalary()/30*getAbsenteeism();
 	}
 
 }
