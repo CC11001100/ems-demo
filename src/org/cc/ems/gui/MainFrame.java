@@ -91,7 +91,7 @@ public class MainFrame extends JFrame {
 		getContentPane().setLayout(borderLayout);
 		
 		searchInputField=new JTextField(15);
-		searchInputField.setToolTipText("输入雇员名字过滤");
+		searchInputField.setToolTipText("输入雇员名字过滤，拼音也好使");
 		JPanel panel=new JPanel();
 		
 		panel.add(searchInputField);
