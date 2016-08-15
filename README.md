@@ -1,7 +1,7 @@
 
 
 
-***EMS - Demo ***
+*** EMS - Demo ***
 
 
 一个小小的雇员系统的Demo，实现的功能如下：
@@ -21,7 +21,7 @@
  			使用JTable，单击就可以编辑，会自动同步到后台的
  			
 ![单击修改](https://github.com/BenDanChen/ems-demo/blob/master/%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90/%E9%A2%84%E8%A7%88_%E7%9B%B4%E6%8E%A5%E5%8D%95%E5%87%BB%E4%BF%AE%E6%94%B9.png)
- 			
+ 			或者选中记录使用弹窗修改	
 ![弹窗修改](https://github.com/BenDanChen/ems-demo/blob/master/%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90/%E9%A2%84%E8%A7%88_%E4%BD%BF%E7%94%A8%E5%BC%B9%E5%87%BA%E6%A1%86%E4%BF%AE%E6%94%B9.png)
  			
  		1.4 查询
