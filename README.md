@@ -34,9 +34,10 @@
 	
 	3. 保存，只要保存一下，保证d:/employeeDB.xml是存在的，以后就和普通的程序没太大区别了。
 	
-
+主界面：
 ![主界面](https://github.com/BenDanChen/ems-demo/blob/master/%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90/%E9%A2%84%E8%A7%88_%E4%B8%BB%E7%95%8C%E9%9D%A2.png)
 
+一些菜单：
 ![菜单](https://github.com/BenDanChen/ems-demo/blob/master/%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90/%E9%A2%84%E8%A7%88_%E8%8F%9C%E5%8D%95.png)
 
 
