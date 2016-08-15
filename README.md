@@ -1,7 +1,7 @@
 
 
 
-*** EMS - Demo ***
+### EMS - Demo ###
 
 
 一个小小的雇员系统的Demo，实现的功能如下：
@@ -11,7 +11,7 @@
  	1. 基本的CRUD
  	
  		1.1 增加
- 			
+ ![](https://github.com/BenDanChen/ems-demo/blob/master/%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90/%E9%A2%84%E8%A7%88_%E6%B7%BB%E5%8A%A0.png)
  		1.2 删除
  			可以选中多条进行批量删除
  			
